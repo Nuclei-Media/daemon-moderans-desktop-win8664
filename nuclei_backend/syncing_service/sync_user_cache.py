@@ -12,12 +12,16 @@ import base64
 
 class RedisController:
     def __init__(self, user):
-        DOCKER_CONN = "redis://redis:6379"
+        DOCKER_CONN = "rediss://scared-bird-nbdqvk.ziska44n.traefikhub.io/:6379"
+
+        DEV_CONN = "redis://redis:6379"
+
         DEV_DOCKER = "redis://default:redispw@localhost:6379/0"
-        DEV_CONN = "redis://default:redispw@localhost:6379"
+
         self.redis_connection = redis.Redis().from_url(
             url=DOCKER_CONN, decode_responses=True, db=0
         )
+
         self.user = user
 
     def set_files(self, file: list[dict[str, bytes]]):
